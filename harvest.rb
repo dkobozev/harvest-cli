@@ -185,6 +185,7 @@ class Harvest
     def log_hours(hours, options = {})
         if entry = entries.first
             options[:id] = entry['id']
+            options[:notes] ||= entry['notes']
             update_entry(entry['hours'].to_f + hours, options)
         else
             create_entry(hours, options)
